@@ -1,0 +1,55 @@
+@startuml
+!define AWSPUML https://raw.githubusercontent.com/awslabs/aws-icons-for-plantuml/v14.0/dist
+!define SPRITESURL https://raw.githubusercontent.com/Roemer/plantuml-sprites/v2.1
+
+!define SERVER_SPRITE(sprite) SPRITESURL/sprites/sprite.puml
+!define SSH_SPRITE(sprite) SPRITESURL/sprites/sprite.puml
+!define NGINX_SPRITE(sprite) SPRITESURL/sprites/sprite.puml
+!define ARROW_SPRITE(sprite) SPRITESURL/sprites/sprite.puml
+
+!define INTERNAL_SERVER_SPRITE SERVER_SPRITE(server)
+!define EXTERNAL_SERVER_SPRITE SERVER_SPRITE(server)
+
+!define SSH_CONNECTION_SPRITE(sprite) SPRITESURL/sprites/sprite.puml
+
+!define INTERNET_SPRITE(sprite) SPRITESURL/sprites/sprite.puml
+
+!define ROUTER_SPRITE(sprite) SPRITESURL/sprites/sprite.puml
+
+!define FIREWALL_SPRITE(sprite) SPRITESURL/sprites/sprite.puml
+
+!define CLOUD_SPRITE(sprite) SPRITESURL/sprites/sprite.puml
+
+!define DATABASE_SPRITE(sprite) SPRITESURL/sprites/sprite.puml
+
+!define CLIENT_SPRITE(sprite) SPRITESURL/sprites/sprite.puml
+
+!define INTERNET_SPRITE(sprite) SPRITESURL/sprites/sprite.puml
+
+!define ROUTER_SPRITE(sprite) SPRITESURL/sprites/sprite.puml
+
+!define FIREWALL_SPRITE(sprite) SPRITESURL/sprites/sprite.puml
+
+!define CLOUD_SPRITE(sprite) SPRITESURL/sprites/sprite.puml
+
+!define DATABASE_SPRITE(sprite) SPRITESURL/sprites/sprite.puml
+
+!define CLIENT_SPRITE(sprite) SPRITESURL/sprites/sprite.puml
+
+!define INTERNET_SPRITE(sprite) SPRITESURL/sprites/sprite.puml
+
+!define ROUTER_SPRITE(sprite) SPRITESURL/sprites/sprite.puml
+
+!define FIREWALL_SPRITE(sprite) SPRITESURL/sprites/sprite.puml
+
+!define CLOUD_SPRITE(sprite) SPRITESURL/sprites/sprite.puml
+
+!define DATABASE_SPRITE(sprite) SPRITESURL/sprites/sprite.puml
+
+!define CLIENT_SPRITE(sprite) SPRITESURL/sprites/sprite.puml
+
+!define INTERNET_SPRITE(sprite) SPRITESURL/sprites/sprite.puml
+
+!define ROUTER_SPRITE(sprite) SPRITESURL/sprites/sprite.puml
+
+!

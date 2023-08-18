@@ -1,0 +1,32 @@
+@startuml
+!define InternalServer 192.168.8.2
+!define ExternalServer 172.26.150.240
+
+start
+:User initiates SSH;
+if (ExternalServer reachable?) then (@startuml
+                                     node "内网服务器" as internal_server
+                                     node "外网服务器" as external_server
+                                     node "Nginx" as nginx
+
+                                     internal_server --> external_server : SSH连接
+                                     external_server --> nginx : 8083端口
+                                     nginx --> internal_server : 8092端口
+
+                                     @endumlyes)
+  :SSH into ExternalServer;
+  if (SSH with port forwarding?) then (yes)
+    :Expose port 8083;
+    if (Nginx forwards traffic?) then (yes)
+      :Nginx forwards to InternalServer;
+    else (no)
+      :Directly access InternalServer;
+    endif
+  else (no)
+    :Regular SSH session;
+  endif
+else (no)
+  :Cannot reach ExternalServer;
+endif
+stop
+@enduml

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.first_floor.generator.mapper.PackingInfoMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.first_floor.generator.domain.PackingInfo">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="deviceCount" column="device_count" jdbcType="INTEGER"/>
+            <result property="operatorId" column="operator_id" jdbcType="VARCHAR"/>
+            <result property="packingTime" column="packing_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,device_count,operator_id,
+        packing_time
+    </sql>
+     <select id="getAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from packing_info
+    </select>
+    <update id="updateDeviceCount">
+        UPDATE packing_info
+        SET device_count = (
+            SELECT COUNT(*)
+            FROM order_info
+            WHERE operator_id = packing_info.id
+        )
+    </update>
+    <insert id="insertAll">
+        insert into packing_info
+        (device_count, operator_id,
+         packing_time)
+        values ( #{deviceCount,jdbcType=NUMERIC}, #{operatorId,jdbcType=VARCHAR},
+                #{packingTime,jdbcType=TIMESTAMP})
+
+    </insert>
+    <delete id="deleteById">
+        delete
+        from packing_info
+        where id = #{id,jdbcType=NUMERIC}
+    </delete>
+</mapper>

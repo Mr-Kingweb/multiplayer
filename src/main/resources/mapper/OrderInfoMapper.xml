@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.first_floor.generator.mapper.OrderInfoMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.first_floor.generator.domain.OrderInfo">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="orderNumber" column="order_number" jdbcType="VARCHAR"/>
+        <result property="customerNumber" column="customer_number" jdbcType="VARCHAR"/>
+        <result property="brand" column="brand" jdbcType="VARCHAR"/>
+        <result property="quantity" column="quantity" jdbcType="INTEGER"/>
+        <result property="specification" column="specification" jdbcType="VARCHAR"/>
+        <result property="remark" column="remark" jdbcType="VARCHAR"/>
+        <result property="tableNumber" column="table_number" jdbcType="VARCHAR"/>
+        <result property="boxOrWorkerNumber" column="box_or_worker_number" jdbcType="VARCHAR"/>
+        <result property="productionTime" column="production_time" jdbcType="TIMESTAMP"/>
+        <result property="operatorId" column="operator_id" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id
+        ,order_number,customer_number,
+        brand,quantity,specification,
+        remark,table_number,box_or_worker_number,
+        production_time,operator_id
+    </sql>
+    <select id="selectAllOrderByTime" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from order_info
+        order by production_time desc
+    </select>
+    <insert id="insertAll">
+        insert into order_info
+        (order_number, customer_number,
+         brand, quantity, specification,
+         remark, table_number, box_or_worker_number,
+         production_time,operator_id)
+        values (#{orderNumber,jdbcType=VARCHAR}, #{customerNumber,jdbcType=VARCHAR},
+                #{brand,jdbcType=VARCHAR}, #{quantity,jdbcType=NUMERIC}, #{specification,jdbcType=VARCHAR},
+                #{remark,jdbcType=VARCHAR}, #{tableNumber,jdbcType=VARCHAR}, #{boxOrWorkerNumber,jdbcType=VARCHAR},
+                #{productionTime,jdbcType=TIMESTAMP},#{operatorId,jdbcType=NUMERIC})
+
+    </insert>
+    <delete id="deleteById">
+        delete
+        from order_info
+        where id = #{id,jdbcType=NUMERIC}
+    </delete>
+    <update id="updateId" parameterType="com.example.first_floor.generator.domain.OrderInfo">
+        update order_info
+        set order_number         = #{orderNumber,jdbcType=VARCHAR},
+            customer_number      = #{customerNumber,jdbcType=VARCHAR},
+            brand                = #{brand,jdbcType=VARCHAR},
+            quantity             = #{quantity,jdbcType=NUMERIC},
+            specification        = #{specification,jdbcType=VARCHAR},
+            remark               = #{remark,jdbcType=VARCHAR},
+            table_number         = #{tableNumber,jdbcType=VARCHAR},
+            box_or_worker_number = #{boxOrWorkerNumber,jdbcType=VARCHAR},
+            production_time      = #{productionTime,jdbcType=TIMESTAMP}
+        where id = #{id}
+
+    </update>
+    <select id="selectAllByOperatorId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from order_info
+        where
+        operator_id = #{operatorId,jdbcType=NUMERIC}
+    </select>
+    <delete id="deleteByOperatorId">
+        delete
+        from order_info
+        where operator_id = #{operatorId,jdbcType=NUMERIC}
+    </delete>
+
+
+</mapper>
