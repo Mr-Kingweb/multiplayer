@@ -34,8 +34,12 @@ public class PackingInfoServiceImpl extends ServiceImpl<PackingInfoMapper, Packi
 
     @Override
     public JsonResult insertAll(PackingInfo packingInfo) {
-        packingInfoMapper.insertAll(packingInfo);
-        return new JsonResult();
+        try {
+            packingInfoMapper.insertAll(packingInfo);
+            return new JsonResult(HttpStatus.OK);
+        }catch (Exception e){
+            return new JsonResult(HttpStatus.BAD_REQUEST,e);
+        }
     }
 
     @Override
@@ -45,7 +49,7 @@ public class PackingInfoServiceImpl extends ServiceImpl<PackingInfoMapper, Packi
             packingInfoMapper.deleteById(id);
             return new JsonResult(HttpStatus.OK);
         }catch (Exception e){
-            return new JsonResult(HttpStatus.BAD_REQUEST);
+            return new JsonResult(HttpStatus.BAD_REQUEST,e);
         }
 
     }

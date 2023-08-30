@@ -124,7 +124,7 @@ public class OrderInfoServiceImpl extends ServiceImpl<OrderInfoMapper, OrderInfo
         if (success == 1) {
             return new JsonResult(HttpStatus.OK);
         }
-        return new JsonResult(HttpStatus.BAD_REQUEST);
+        return new JsonResult(HttpStatus.BAD_REQUEST,"数据插入失败");
     }
 
     @Override
@@ -133,7 +133,7 @@ public class OrderInfoServiceImpl extends ServiceImpl<OrderInfoMapper, OrderInfo
         if (success == 1) {
             return new JsonResult(HttpStatus.OK);
         }
-        return new JsonResult(HttpStatus.BAD_REQUEST);
+        return new JsonResult(HttpStatus.BAD_REQUEST,"数据删除失败");
     }
 
     @Override
@@ -145,14 +145,18 @@ public class OrderInfoServiceImpl extends ServiceImpl<OrderInfoMapper, OrderInfo
     public JsonResult selectAllByOperatorId(Integer operatorId) {
         List<OrderInfo> orderInfoList = orderInfoMapper.selectAllByOperatorId(operatorId);
         if (orderInfoList.isEmpty()) {
-            return new JsonResult(HttpStatus.NO_CONTENT);
+            return new JsonResult(HttpStatus.NO_CONTENT,"数据库操作失败");
         }
         return new JsonResult(HttpStatus.OK, orderInfoList);
     }
 
     @Override
     public void insertData1(OrderInfo orderInfo) {
-        orderInfoMapper.insertAll(orderInfo);
+        try {
+            orderInfoMapper.insertAll(orderInfo);
+        }catch (Exception e){
+            throw e;
+        }
     }
 }
 
