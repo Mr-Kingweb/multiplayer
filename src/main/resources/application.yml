@@ -17,12 +17,7 @@ spring:
 #      url: jdbc:sqlserver://192.168.8.2:1433;databaseName=generator_test000
 #      username: sa
 #      password: Aa123456
-  datasource:
-    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    url: jdbc:sqlserver://192.168.8.9:1433;databaseName=Generator
-    username: sa
-    password: 123456
-
+# 相关 数据库 连接配置 
 mybatis:
   type-aliases-package: com.example.first_floor.generator.domain
   mapper-locations: classpath:/mapper/*.xml
