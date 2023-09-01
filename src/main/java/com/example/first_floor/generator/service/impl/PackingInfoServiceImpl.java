@@ -27,8 +27,8 @@ public class PackingInfoServiceImpl extends ServiceImpl<PackingInfoMapper, Packi
     @Autowired
     private OrderInfoMapper orderInfoMapper;
     @Override
-    public List<PackingInfo> getAll() {
-        List<PackingInfo> packingInfos = packingInfoMapper.getAll();
+    public List<PackingInfo> getAll(String username) {
+        List<PackingInfo> packingInfos = packingInfoMapper.getAll(username);
         return packingInfos;
     }
 

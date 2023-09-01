@@ -17,7 +17,7 @@ public interface PackingInfoService extends IService<PackingInfo> {
      *
      * @return {@link List}<{@link PackingInfo}>
      */
-    List<PackingInfo> getAll();
+    List<PackingInfo> getAll(String username);
 
     /**
      * 插入所有

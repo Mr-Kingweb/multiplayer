@@ -19,6 +19,7 @@
         select
         <include refid="Base_Column_List"/>
         from packing_info
+        where operator_id = #{username}
     </select>
     <update id="updateDeviceCount">
         UPDATE packing_info

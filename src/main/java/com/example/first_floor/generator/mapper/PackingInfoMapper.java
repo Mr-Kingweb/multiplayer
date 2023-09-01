@@ -17,9 +17,10 @@ public interface PackingInfoMapper extends BaseMapper<PackingInfo> {
     /**
      * 得到所有数据
      *
+     * @param username 用户名
      * @return {@link List}<{@link PackingInfo}>
      */
-    List<PackingInfo> getAll();
+    List<PackingInfo> getAll(@Param("username") String username);
 
     /**
      * 更新设备数

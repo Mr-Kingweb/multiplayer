@@ -36,7 +36,7 @@ public class PackingController {
     @LoginCut
     @GetMapping("/getPackingInfo")
     public List<PackingInfo> getPackingInfo(@RequestParam String username) {
-        return packingInfoService.getAll();
+        return packingInfoService.getAll(username);
     }
 
     @LoginCut
