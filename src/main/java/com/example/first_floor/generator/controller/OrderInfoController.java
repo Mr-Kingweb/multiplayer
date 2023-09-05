@@ -96,6 +96,11 @@ public class OrderInfoController {
                     if (fieldName.equals("productionTime")) {
                         // 当字段为 productionTime 时，插入当前时间
                         fieldValue = LocalDateTime.parse((String) fieldValue, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
+                    }else if (fieldName.equals("quantity")) {
+                        // 如果 field 是 String 类型，将其转换为 Integer 类型
+                        if (fieldValue instanceof String) {
+                            fieldValue = Integer.parseInt((String) fieldValue);
+                        }
                     }
 
                     field.set(orderInfo, fieldValue);
